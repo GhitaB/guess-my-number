@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Guess the number! - a game by GhitaB</title>
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles.css">
+	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<script src="main.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h1>Guess the number!</h1>
+				<p>
+					My number is a <b>random</b> one. It has <b>4 digits</b>. You must <b>guess</b> it.
+					When you try a number I will tell you <b>how many digits are ok</b>, and how many of them
+					are in the <b>right place</b>. <i>Are you ready?</i>
+				</p>
+				<button id="choose_number" class="btn btn-default pull-right">
+					Yes. Choose a number, dear computer!
+				</button>
+			</div>		
+		</div>
+		<div class="row">
+			<div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<p id="status"><b>Hint:</b> To start press the button.</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
