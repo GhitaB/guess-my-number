@@ -35,8 +35,12 @@ $(document).ready(function(){
 		$("#choose_number").hide();
 		show_status("Status:", "Game started.");
 		console.log(number);
+		$("#game_board").show();
 	}
 
+	// Preparing...
+	$("#game_board").hide();
 	show_status("Status:", "Are you ready? Press the button to start.");
+	// Start on click
 	$("#choose_number").on("click", start_game);
 });

@@ -24,6 +24,12 @@ h1 {
 	color: #AC3931;
 }
 
+h2, h3, h4 {
+	text-align: center;	
+	font-weight: 400;
+	color: #AC3931;
+}
+
 p {
 	color: #482C3D;
 	font-size: 16px;
