@@ -30,6 +30,16 @@ $(document).ready(function(){
 		$("#status").html("<b>" + text_bold + "</b> " + text_normal);
 	}
 
+	var $tbody = $("#history_table tbody")
+	function add_record_to_history(your_number, nr_good_digits, nr_good_positions) {
+		var $tr = $("<tr>");
+		$tr.append($("<td>", {text: $("tr", $tbody).length + 1} ));
+		$tr.append($("<td>", {text: your_number} ));
+		$tr.append($("<td>", {text: nr_good_digits} ));
+		$tr.append($("<td>", {text: nr_good_positions} ));
+		$tbody.append($tr);
+	}
+
 	function game_victory() {
 		show_status("Victory!", "You finished the game.");
 		$("#game_board").hide();
@@ -50,11 +60,6 @@ $(document).ready(function(){
 			c3 = parseInt(computer_number / 10) % 10;
 			c2 = parseInt(computer_number / 100) % 10;
 			c1 = parseInt(computer_number / 1000) % 10;
-
-			/*y_array = [y1, y2, y3, y4];
-			c_array = [c1, c2, c3, c4];
-			console.log("yyy", y_array);
-			console.log("ccc", c_array);*/
 
 			var nr_good_digits = 0;
 			var nr_good_positions = 0;
@@ -96,6 +101,8 @@ $(document).ready(function(){
 			}
 
 			show_status("Status:", "You guessed " + nr_good_digits + " and " + nr_good_positions + " in the right place.");
+			var index = 0;
+			add_record_to_history(your_number, nr_good_digits, nr_good_positions);
 		}
 	}
 
@@ -105,7 +112,6 @@ $(document).ready(function(){
 		var your_number = 0;
 		$("#choose_number").hide();
 		show_status("Status:", "Game started.");
-		console.log("I choose: ", computer_number);
 
 		// Game board is made visible.
 		$("#game_board").show();
