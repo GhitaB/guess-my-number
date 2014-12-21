@@ -30,12 +30,92 @@ $(document).ready(function(){
 		$("#status").html("<b>" + text_bold + "</b> " + text_normal);
 	}
 
+	function game_victory() {
+		show_status("Victory!", "You finished the game.");
+		$("#game_board").hide();
+		$("#choose_number").text("Start a new one?");
+		$("#choose_number").show();
+	}
+
+	function verify_numbers(your_number, computer_number) {
+		if (your_number == computer_number) {
+			game_victory();
+		} else {
+			y4 = your_number % 10;
+			y3 = parseInt(your_number / 10) % 10;
+			y2 = parseInt(your_number / 100) % 10;
+			y1 = parseInt(your_number / 1000) % 10;
+
+			c4 = computer_number % 10;
+			c3 = parseInt(computer_number / 10) % 10;
+			c2 = parseInt(computer_number / 100) % 10;
+			c1 = parseInt(computer_number / 1000) % 10;
+
+			/*y_array = [y1, y2, y3, y4];
+			c_array = [c1, c2, c3, c4];
+			console.log("yyy", y_array);
+			console.log("ccc", c_array);*/
+
+			var nr_good_digits = 0;
+			var nr_good_positions = 0;
+
+			if(y1 == c1) {
+				nr_good_digits ++;
+				nr_good_positions ++;
+			} else {
+				if(y1 == c2 || y1 == c3 || y1 == c4) {
+					nr_good_digits ++;
+				}
+			}
+
+			if(y2 == c2) {
+				nr_good_digits ++;
+				nr_good_positions ++;
+			} else {
+				if(y2 == c1 || y2 == c3 || y2 == c4) {
+					nr_good_digits ++;
+				}
+			}
+
+			if(y3 == c3) {
+				nr_good_digits ++;
+				nr_good_positions ++;
+			} else {
+				if(y3 == c1 || y3 == c2 || y3 == c4) {
+					nr_good_digits ++;
+				}
+			}
+
+			if(y4 == c4) {
+				nr_good_digits ++;
+				nr_good_positions ++;
+			} else {
+				if(y4 == c1 || y4 == c2 || y4 == c3) {
+					nr_good_digits ++;
+				}
+			}
+
+			show_status("Status:", "You guessed " + nr_good_digits + " and " + nr_good_positions + " in the right place.");
+		}
+	}
+
 	function start_game() {
-		var number = choose_number();
+		// Computer chooses the number.
+		var computer_number = choose_number();
+		var your_number = 0;
 		$("#choose_number").hide();
 		show_status("Status:", "Game started.");
-		console.log(number);
+		console.log("I choose: ", computer_number);
+
+		// Game board is made visible.
 		$("#game_board").show();
+
+		// You start trying numbers.
+		$("#try_it").on("click", function(evt){
+			evt.preventDefault(); // prevent Submit
+			your_number = parseInt($("#your_number").val());
+			verify_numbers(your_number, computer_number);
+		});
 	}
 
 	// Preparing...
