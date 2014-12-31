@@ -10,7 +10,11 @@ $(document).ready(function(){
 		d1 = parseInt(a_number / 1000) % 10;
 
 		if(d1 != d2 && d1 != d3 && d1 != d4 && d2 != d3 && d2 != d4 && d3 != d4) {
-			return true;
+			if(d1!= 0) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -120,7 +124,13 @@ $(document).ready(function(){
 		$("#try_it").on("click", function(evt){
 			evt.preventDefault(); // prevent Submit
 			your_number = parseInt($("#your_number").val());
-			verify_numbers(your_number, computer_number);
+			if(number_has_distinct_digits(your_number)){
+				verify_numbers(your_number, computer_number);	
+				show_status("Status:", "Try to find the good number.");
+			} else {
+				show_status("Error:", "Invalid number.");
+			}
+			
 		});
 	}
 
