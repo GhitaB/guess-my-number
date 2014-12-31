@@ -107,6 +107,7 @@ $(document).ready(function(){
 			show_status("Status:", "You guessed " + nr_good_digits + " and " + nr_good_positions + " in the right place.");
 			var index = 0;
 			add_record_to_history(your_number, nr_good_digits, nr_good_positions);
+			$("#your_number").val("");
 		}
 	}
 
@@ -128,7 +129,7 @@ $(document).ready(function(){
 				show_status("Status:", "Try to find the good number.");
 				verify_numbers(your_number, computer_number);
 			} else {
-				show_status("Error:", "Try numbers with distinct digits, please.");
+				show_status("Error:", "Try numbers with 4 distinct digits, please.");
 			}
 			
 		});
