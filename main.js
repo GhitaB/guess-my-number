@@ -47,8 +47,6 @@ $(document).ready(function(){
 	function game_victory() {
 		show_status("Victory!", "You finished the game.");
 		$("#game_board").hide();
-		$("#choose_number").text("Start a new one?");
-		$("#choose_number").show();
 	}
 
 	function verify_numbers(your_number, computer_number) {
