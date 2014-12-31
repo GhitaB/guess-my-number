@@ -123,13 +123,16 @@ $(document).ready(function(){
 		$("#try_it").on("click", function(evt){
 			evt.preventDefault(); // prevent Submit
 			your_number = parseInt($("#your_number").val());
-			if(number_has_distinct_digits(your_number)){
-				show_status("Status:", "Try to find the good number.");
-				verify_numbers(your_number, computer_number);
+			if(isNaN(your_number)) {
+				show_status("Error:", "Enter only numbers.");
 			} else {
-				show_status("Error:", "Try numbers with 4 distinct digits, please.");
+				if(number_has_distinct_digits(your_number)){
+					show_status("Status:", "Try to find the good number.");
+					verify_numbers(your_number, computer_number);
+				} else {
+					show_status("Error:", "Try numbers with 4 distinct digits, please.");
+				}
 			}
-			
 		});
 	}
 
