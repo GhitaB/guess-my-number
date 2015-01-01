@@ -46,59 +46,33 @@ $(document).ready(function(){
 
 	function game_victory() {
 		show_status("Victory!", "You finished the game.");
-		$("#game_board").hide();
+		$("#title_work").text("Victory!");
+		$("#form_number_submit").hide();
 	}
 
 	function verify_numbers(your_number, computer_number) {
 		if (your_number == computer_number) {
+			add_record_to_history(your_number, 4, 4);
 			game_victory();
 		} else {
-			y4 = your_number % 10;
-			y3 = parseInt(your_number / 10) % 10;
-			y2 = parseInt(your_number / 100) % 10;
-			y1 = parseInt(your_number / 1000) % 10;
-
-			c4 = computer_number % 10;
-			c3 = parseInt(computer_number / 10) % 10;
-			c2 = parseInt(computer_number / 100) % 10;
-			c1 = parseInt(computer_number / 1000) % 10;
+			y = your_number.toString();
+			c = computer_number.toString();
 
 			var nr_good_digits = 0;
 			var nr_good_positions = 0;
 
-			if(y1 == c1) {
-				nr_good_digits ++;
-				nr_good_positions ++;
-			} else {
-				if(y1 == c2 || y1 == c3 || y1 == c4) {
+			for (var i = 0; i < 4; i++) {
+				if(y[i] == c[i]) {
 					nr_good_digits ++;
-				}
-			}
-
-			if(y2 == c2) {
-				nr_good_digits ++;
-				nr_good_positions ++;
-			} else {
-				if(y2 == c1 || y2 == c3 || y2 == c4) {
-					nr_good_digits ++;
-				}
-			}
-
-			if(y3 == c3) {
-				nr_good_digits ++;
-				nr_good_positions ++;
-			} else {
-				if(y3 == c1 || y3 == c2 || y3 == c4) {
-					nr_good_digits ++;
-				}
-			}
-
-			if(y4 == c4) {
-				nr_good_digits ++;
-				nr_good_positions ++;
-			} else {
-				if(y4 == c1 || y4 == c2 || y4 == c3) {
-					nr_good_digits ++;
+					nr_good_positions ++;	
+				} else {
+					for (var j = 0; j < 4; j++) {
+						if(i != j) {
+							if(y[i] == c[j]) {
+								nr_good_digits ++;
+							}
+						}
+					}
 				}
 			}
 
