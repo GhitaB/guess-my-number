@@ -2,7 +2,7 @@ Guess My Number
 ===============
 The numberical version of buills and cows game.
 
-[![]([2])][1]
+[![][2]][1]
 
 ## How to play
 The computer chooses a number and you must find it. When you try a number you
