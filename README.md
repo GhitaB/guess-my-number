@@ -1,6 +1,6 @@
 Guess My Number
 ===============
-The numerical version of buills and cows game.
+The numerical version of bulls and cows game.
 
 [![][2]][1]
 
