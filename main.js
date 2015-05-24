@@ -4,12 +4,10 @@ $(document).ready(function(){
 	}
 
 	function number_has_distinct_digits(a_number) {
-		if(a_number.length != 4) return false;
-		
-		d4 = parseInt(a_number[3]);
-		d3 = parseInt(a_number[2]);
-		d2 = parseInt(a_number[1]);
-		d1 = parseInt(a_number[0]);
+		d4 = a_number % 10;
+		d3 = parseInt(a_number / 10) % 10;
+		d2 = parseInt(a_number / 100) % 10;
+		d1 = parseInt(a_number / 1000) % 10;
 
 		if(d1 != d2 && d1 != d3 && d1 != d4 && d2 != d3 && d2 != d4 && d3 != d4) {
 			if(d1!= 0) {
@@ -98,7 +96,7 @@ $(document).ready(function(){
 		// You start trying numbers.
 		$("#try_it").on("click", function(evt){
 			evt.preventDefault(); // prevent Submit
-			your_number = $("#your_number").val();
+			your_number = parseInt($("#your_number").val());
 			if(isNaN(your_number)) {
 				show_status("Error:", "Enter only numbers.");
 			} else {
