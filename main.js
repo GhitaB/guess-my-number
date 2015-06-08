@@ -3,30 +3,15 @@ $(document).ready(function(){
     	return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	function number_has_distinct_digits(a_number) {
-		d4 = a_number % 10;
-		d3 = parseInt(a_number / 10) % 10;
-		d2 = parseInt(a_number / 100) % 10;
-		d1 = parseInt(a_number / 1000) % 10;
-
-		if(d1 != d2 && d1 != d3 && d1 != d4 && d2 != d3 && d2 != d4 && d3 != d4) {
-			if(d1!= 0) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
+	function number_has_distinct_digits(n) {
+		return !/(.+)\1/.test(n);
 	}
 
 	function choose_number() {
-		while(true) {
+		do {
 			a_number = get_random_int_number(1234, 9876);
-			if(number_has_distinct_digits(a_number)) {
-				break;
-			}
-		}
+		} while (!number_has_distinct_digits(a_number));
+
 		return a_number;
 	}
 
@@ -34,13 +19,13 @@ $(document).ready(function(){
 		$("#status").html("<b>" + text_bold + "</b> " + text_normal);
 	}
 
-	var $tbody = $("#history_table tbody")
 	function add_record_to_history(your_number, nr_good_digits, nr_good_positions) {
-		var $tr = $("<tr>");
-		$tr.append($("<td>", {text: $("tr", $tbody).length + 1} ));
-		$tr.append($("<td>", {text: your_number} ));
-		$tr.append($("<td>", {text: nr_good_digits} ));
-		$tr.append($("<td>", {text: nr_good_positions} ));
+		var $tr = $("<tr>"),
+			$tbody =$("#history_table tbody");
+		$tr.append($("<td>", {text: $("tr", $tbody).length + 1}));
+		$tr.append($("<td>", {text: your_number}));
+		$tr.append($("<td>", {text: nr_good_digits}));
+		$tr.append($("<td>", {text: nr_good_positions}));
 		$tbody.append($tr);
 	}
 
@@ -54,30 +39,24 @@ $(document).ready(function(){
 		if (your_number == computer_number) {
 			add_record_to_history(your_number, 4, 4);
 			game_victory();
-		} else {
+		}
+		else {
 			y = your_number.toString();
 			c = computer_number.toString();
 
 			var nr_good_digits = 0;
 			var nr_good_positions = 0;
 
-			for (var i = 0; i < 4; i++) {
-				if(y[i] == c[i]) {
-					nr_good_digits ++;
-					nr_good_positions ++;	
-				} else {
-					for (var j = 0; j < 4; j++) {
-						if(i != j) {
-							if(y[i] == c[j]) {
-								nr_good_digits ++;
-							}
-						}
-					}
-				}
+			for (var i = 0; i < y.length; i++)
+			{
+				if (new RegExp(y[i]).test(c))
+					nr_good_digits++;
+
+				if (y[i] == c[i])
+					nr_good_positions++;
 			}
 
 			show_status("Status:", "You guessed " + nr_good_digits + " and " + nr_good_positions + " in the right place.");
-			var index = 0;
 			add_record_to_history(your_number, nr_good_digits, nr_good_positions);
 			$("#your_number").val("");
 		}
@@ -97,15 +76,15 @@ $(document).ready(function(){
 		$("#try_it").on("click", function(evt){
 			evt.preventDefault(); // prevent Submit
 			your_number = parseInt($("#your_number").val());
-			if(isNaN(your_number)) {
+			if (isNaN(your_number))
 				show_status("Error:", "Enter only numbers.");
-			} else {
-				if(number_has_distinct_digits(your_number)){
+			else {
+				if (number_has_distinct_digits(your_number)) {
 					show_status("Status:", "Try to find the good number.");
 					verify_numbers(your_number, computer_number);
-				} else {
-					show_status("Error:", "Try numbers with 4 distinct digits, please.");
 				}
+				else
+					show_status("Error:", "Try numbers with 4 distinct digits, please.");
 			}
 		});
 	}
