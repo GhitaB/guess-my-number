@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+	hashids = new Hashids("iDj*~u%W->=H+-L2OCJh4~m%$440HFc0&_GxFGFv}*re*/W=z4f:cA/@VGR;;|^P");
+
 	function get_random_int_number(min, max) {
     	return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
@@ -12,7 +15,7 @@ $(document).ready(function(){
 			a_number = get_random_int_number(1234, 9876);
 		} while (!number_has_distinct_digits(a_number));
 
-		return a_number;
+		return hashids.encode(a_number);
 	}
 
 	function show_status(text_bold, text_normal) {
@@ -35,14 +38,15 @@ $(document).ready(function(){
 		$("#form_number_submit").hide();
 	}
 
-	function verify_numbers(your_number, computer_number) {
-		if (your_number == computer_number) {
+	function verify_numbers(your_number, computer_number_hashed) {
+		//var computer_number = hashids.decode(computer_number_hashed);
+		if (your_number == hashids.decode(computer_number_hashed)) {
 			add_record_to_history(your_number, 4, 4);
 			game_victory();
 		}
 		else {
 			y = your_number.toString();
-			c = computer_number.toString();
+			c = hashids.decode(computer_number_hashed).toString();
 
 			var nr_good_digits = 0;
 			var nr_good_positions = 0;
