@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Guess my number! - a game by GhitaB</title>
-	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Guess my number! - a game by GhitaB</title>
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <link rel="shortcut icon" href="Images/favicon.ico" />
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="styles.css">
-	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" src="lib/hashids.min.js"></script>
-	<script src="main.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="lib/hashids.min.js"></script>
+  <script src="main.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<h1>Guess my number!</h1>
-				<p>
-					My number is a <b>random</b> one. It has <b>4 DISTINCT digits</b>.
-					You must <b>guess</b> it.
-					When you try a number I will tell you <b>how many digits are ok</b> and how many of them
-					are in the <b>right place</b>.
-				</p>
-				<button id="choose_number" class="btn btn-default pull-right">
-					Yes. Choose a number, dear computer!
-				</button>
-			</div>
-		</div>
-		<div id="game_board" class="row">
-			<div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<h3 id="title_work">Your work in progress...</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h1>Guess my number!</h1>
+        <p>
+          My number is a <b>random</b> one. It has <b>4 DISTINCT digits</b>.
+          You must <b>guess</b> it.
+          When you try a number I will tell you <b>how many digits are ok</b> and how many of them
+          are in the <b>right place</b>.
+        </p>
+        <button id="choose_number" class="btn btn-default pull-right">
+          Yes. Choose a number, dear computer!
+        </button>
+      </div>
+    </div>
+    <div id="game_board" class="row">
+      <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3 id="title_work">Your work in progress...</h3>
 
-				<div class="panel panel-default">
-				  <div class="panel-heading">History</div>
-				  <table id="history_table" class="table table-condensed">
-				    <thead>
-				    	<tr>
-					    	<th>#</th>
-					    	<th>Your number</th>
-					    	<th>Good digits</th>
-					    	<th>Good positions</th>
-				    	</tr>
-				    </thead>
-				    <tbody>
-				    </tbody>
-				  </table>
-				</div>
+        <div class="panel panel-default">
+          <div class="panel-heading">History</div>
+          <table id="history_table" class="table table-condensed">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Your number</th>
+                <th>Good digits</th>
+                <th>Good positions</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
 
-				<form id="form_number_submit" class="form-inline">
-				  <div class="form-group">
-				    <label for="your_number">Your number</label>
-				    <input type="number" class="form-control" id="your_number" placeholder="Try to guess my number">
-				  </div>
-				  <button id="try_it" type="" class="btn btn-default">Try it!</button>
-				</form>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<p id="status" class="small"></p>
-			</div>
-		</div>
-	</div>
+        <form id="form_number_submit" class="form-inline">
+          <div class="form-group">
+            <label for="your_number">Your number</label>
+            <input type="number" class="form-control" id="your_number" placeholder="Try to guess my number">
+          </div>
+          <button id="try_it" type="" class="btn btn-default">Try it!</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <p id="status" class="small"></p>
+      </div>
+    </div>
+  </div>
   <div class="container-fluid">
     <p class="text-center">
       <a href="https://ghitab.github.io/projects/">
