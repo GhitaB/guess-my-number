@@ -3,11 +3,24 @@ $(document).ready(function() {
   hashids = new Hashids("iDj*~u%W->=H+-L2OCJh4~m%$440HFc0&_GxFGFv}*re*/W=z4f:cA/@VGR;;|^P");
 
   function get_random_int_number(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  function number_has_distinct_digits(n) {
-    return !/(.+)\1/.test(n);
+  function number_has_distinct_digits(a_number) {
+    d4 = a_number % 10;
+    d3 = parseInt(a_number / 10) % 10;
+    d2 = parseInt(a_number / 100) % 10;
+    d1 = parseInt(a_number / 1000) % 10;
+
+    if(d1 != d2 && d1 != d3 && d1 != d4 && d2 != d3 && d2 != d4 && d3 != d4) {
+      if(d1!= 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 
   function choose_number() {
@@ -24,7 +37,7 @@ $(document).ready(function() {
 
   function add_record_to_history(your_number, nr_good_digits, nr_good_positions) {
     var $tr = $("<tr>"),
-      $tbody =$("#history_table tbody");
+    $tbody =$("#history_table tbody");
     $tr.append($("<td>", {text: $("tr", $tbody).length + 1}));
     $tr.append($("<td>", {text: your_number}));
     $tr.append($("<td>", {text: nr_good_digits}));
@@ -39,7 +52,6 @@ $(document).ready(function() {
   }
 
   function verify_numbers(your_number, computer_number_hashed) {
-    //var computer_number = hashids.decode(computer_number_hashed);
     if (your_number == hashids.decode(computer_number_hashed)) {
       add_record_to_history(your_number, 4, 4);
       game_victory();
