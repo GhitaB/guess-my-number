@@ -1,3 +1,5 @@
+Moved here: https://github.com/happywords/guess-my-number
+
 Guess My Number
 ===============
 The numerical version of bulls and cows game.
