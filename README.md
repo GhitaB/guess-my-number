@@ -28,3 +28,5 @@ See the [LICENSE](./LICENSE) file.
 
   [1]: http://ghitab.github.io/guess-my-number
   [2]: http://i.imgur.com/vfsRtCY.jpg
+
+[![Contact me on Codementor](https://www.codementor.io/m-badges/ghitab/find-me-on-cm-b.svg)](https://www.codementor.io/@ghitab?refer=badge)
