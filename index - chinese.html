@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guess Number - a game by AiWoNGs</title>
+  <script src="lib/jquery-1.11.2.min.js"></script>
+  <script href="lib/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="images/favicon.ico" />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href='css/fonts.googleapis.css.css' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="lib/hashids.min.js"></script>
+  <script src="lib/aiwongs.func.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h1>Guess Number 2019</h1>
+		<h4>   by AiWoNGs</h4>
+        <p>
+          由服务器随机生成了一个<b>随机数</b>。 它们是<b>4个完全不同的独立数字</b>，每个数字是<b>1～9</b>之间，
+          你的任务是<b>猜出</b>这4个数字.
+          每当你猜一次数字，我都会提示你<b>有多少数字是正确的</b>，同时还会提示你<b>哪些数字的先后位置是正确的</b>.
+        </p>
+        <button id="choose_number" class="btn btn-default pull-right">
+          现在开始生成一个随机数！
+        </button>
+      </div>
+    </div>
+    <div id="game_board" class="row">
+      <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3 id="title_work">你目前的进展...</h3>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">猜数过程</div>
+          <table id="history_table" class="table table-condensed">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>你猜过的数字</th>
+                <th>正确的数字</th>
+                <th>位置也正确的数字</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+        <form id="form_number_submit" class="form-inline">
+          <div class="form-group">
+            <label for="your_number">输入你的4个数字</label>
+            <input type="number" class="form-control" id="your_number" placeholder="尝试猜数～">
+          </div>
+          <button id="try_it" type="" class="btn btn-default">开始猜！</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <p id="status" class="small"></p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <p class="text-center">
+      <a>
+        The projects
+      </a>
+      by
+      <a>
+        AiWoNGs
+      </a>
+    </p>
+  </div>
+</body>
+</html>
