@@ -1,0 +1,63 @@
+/* Colors:
+#AC3931 - red
+#E5D352 - yellow
+#D9E76C - yellow light
+#537D8D - blue
+#482C3D - purple
+*/
+
+body {
+  background: #537D8D;
+  font-family: 'Arvo', serif;
+}
+
+.container {
+  margin-top: 20px;
+  width: 500px;
+  background: #E5D352;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 700;
+  color: #AC3931;
+}
+
+h2, h3, h4 {
+  text-align: center;
+  font-weight: 400;
+  color: #AC3931;
+}
+
+p {
+  color: #482C3D;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  font-weight: 700;
+}
+
+.btn-default {
+  background: white;
+  border: none;
+  color: #AC3931;
+}
+
+.btn-default:hover {
+  background: #AC3931;
+  border: none;
+  color: white;
+}
+
+#status {
+  background: #D9E76C;
+  padding: 10px;
+}
+
+.container-fluid a {
+  color: #FFFFFF;
+}
